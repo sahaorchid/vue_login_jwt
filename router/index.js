@@ -34,10 +34,9 @@ router.beforeEach((to,from,next)=>{
             Authorization: localStorage.getItem('token')
           }
         }).then((res)=>{
-          store.state.user = res.data.user
-          console.log(store.state.user)
-        })
-      next()  
+          store.commit('setUser',res.data.user)
+          next()
+        })  
       
     }else{
       next('/')
